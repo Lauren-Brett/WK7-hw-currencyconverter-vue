@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="./js/bundle.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h2>Currency Converter</h2>
+    <!-- list rates -->
+    <input id="amount" type="number" v-model.number="amountToConvert" v-on:change="convert">
+    <label for="amount">Euros</label>
+    <span>, </span>
+    <label for="currency">In currency</label>
+    <select id="currency" v-model="selectedCurrencyCode" v-on:change="convert">
+      <option value="">Select a currency</option>
+      <option  v-for="(rate, currencyCode) in currencyRates" v-bind:value="currencyCode">
+        {{ currencyCode }} 
+      </option> 
+    </select>
+    <p v-if="convertedAmount">{{ convertedAmount }}</p>
+  
+
+  </div>
+</body>
+</html>
